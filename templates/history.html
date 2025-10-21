@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table>
+      <thead>
+        <tr>
+          <th>Stock symbol</th>
+          <th>Shares</th>
+          <th>Price</th>
+          <th>Buy (1) or Sell (0)</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add for loop here -->
+         {% for row in rows %}
+          <tr>
+              <td>{{row["symbol"]}}</td>
+              <td>{{row["shares"]}}</td>
+              <td>{{"{:,.2f}".format(row["price"])}}</td>
+              <td>{{row["buy"]}}</td>
+              <td>{{row["timestamp"]}}</td>
+          </tr>
+         {% endfor %}
+      </tbody>
+{% endblock %}

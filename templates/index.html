@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home: Username
+
+{% endblock %}
+
+{% block main %}
+    <h3>Dashboard for <u>{{ username }}</u></h1>
+    <h5>Current cash balance: {{ "{:,.2f}".format(cash) }}</h5>
+    <h5>Total balance: {{ "{:,.2f}".format(cash + sum) }}</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Stock</th>
+          <th>Shares owned</th>
+          <th>Current price</th>
+          <th>Total value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add for loop here -->
+         {% for symbol, info in portfolio.items() %}
+          <tr>
+              <td>{{symbol}}</td>
+              <td>{{info["shares"]}}</td>
+              <td>{{"{:,.2f}".format(info["latest_price"])}}</td>
+              <td>{{"{:,.2f}".format(info["total_value"])}}</td>
+          </tr>
+         {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
